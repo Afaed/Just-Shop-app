@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { where } = require('sequelize/types');
+const { where } = require('sequelize/types/index');
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
@@ -54,14 +54,14 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update({
+  Category.update(req.body, {
     where: {
-      id = req.params.id,
+      id: req.params.id
     },
   })
   .then(dbCategoryData => {
     if (!dbCategoryData[0]) {
-      res.status(404).json({ message: 'No category found with this id'})
+    res.status(404).json({ message: 'No category found with this id'})
       return;
     }
     res.json(dbCategoryData)
@@ -77,7 +77,7 @@ router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
   Category.delete({
     where: {
-      id = req.params.id
+      id: req.params.id
     },
   })
   .then(dbCategoryData => {

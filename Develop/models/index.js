@@ -3,7 +3,7 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
-const { DataTypes } = require('sequelize/types');
+const { DataTypes } = require('sequelize/types/index');
 
 // Products belongsTo Category
 Product.belongsTo(

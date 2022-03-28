@@ -3,7 +3,7 @@ const Product = require('./Product');
 const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
-const { DataTypes } = require('sequelize/types/index');
+//const { DataTypes } = require('sequelize/types/index');
 
 // Products belongsTo Category
 Product.belongsTo(
@@ -17,8 +17,8 @@ Category.hasMany(Product, {
 })
 
 // Products belongToMany Tags (through ProductTag)
-Product.belongtoMany(Tag, {
-  Through: ProductTag,
+Product.belongsToMany(Tag, {
+  through: ProductTag,
   foreign_key: 'product_id',
 
 })

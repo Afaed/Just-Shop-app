@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { UPSERT } = require('sequelize/types/lib/query-types');
+//const { UPSERT } = require('sequelize/types/lib/query-types');
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
@@ -142,7 +142,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
   Product.delete({
-    where: {id = req.params.id}
+    where: {id: req.params.id}
   })
   .then(dbproductData => {
     if (!dbproductData) {
